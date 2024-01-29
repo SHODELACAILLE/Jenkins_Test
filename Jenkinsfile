@@ -1,5 +1,5 @@
 node {  
     stage('Clone repo'){
-        git 'https://github.com/SHODELACAILLE/Jenkins_Test.git'
+        git branch: 'main', url: 'https://github.com/SHODELACAILLE/Jenkins_Test.git'
     }
 }
