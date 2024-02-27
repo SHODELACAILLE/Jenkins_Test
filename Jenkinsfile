@@ -37,7 +37,7 @@ pipeline {
 
     tools {
         // Spécifier l'installation de Maven
-        maven 'Maven'
+        maven 'maven-3.5.2'
     }
 
     stages {
