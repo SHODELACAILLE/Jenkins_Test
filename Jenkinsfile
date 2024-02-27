@@ -33,11 +33,10 @@
 }
 */
 pipeline {
-    agent {
-        label 'windows'
-    }
+    agent any 
 
     tools {
+        // Spécifier l'installation de Maven
         maven 'maven-3.5.2'
     }
 
@@ -46,14 +45,13 @@ pipeline {
             steps {
                 // Naviguer vers le répertoire du projet
                 dir('demo') {
-
-                    bat './mvnw clean package'
-                    bat './mvnw javadoc:javadoc'
+               
+                    sh './mvnw clean package'
+                    sh './mvnw javadoc:javadoc'
                 }
             }
         }
     }
-
 
 
     post {
