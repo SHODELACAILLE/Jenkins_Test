@@ -3,7 +3,7 @@ package com.example.demo;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-public class CalculatriceTest {
+public class DemoApplicationTests {
 
     @Test
     public void testAdd() {
