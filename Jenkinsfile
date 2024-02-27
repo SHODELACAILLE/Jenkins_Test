@@ -28,7 +28,7 @@ pipeline {
 
         stage('Publish Javadoc') {
             steps {
-                // Assume que le Javadoc est généré dans 'target/site/apidocs' dans le répertoire 'demo'
+                // Assume que le Javadoc est généré dans 'target/site/apidocs' dans le répertoire 'demoo'
                 dir('demo/target/site/apidocs') {
                     // Utilise le plugin HTML Publisher pour publier la Javadoc
                     publishHTML(target: [
