@@ -54,18 +54,6 @@ pipeline {
         }
     }
 
-    post {
-       
-        success {
-            script {
-              
-                if (fileExists('**/target/surefire-reports/*.xml')) {
-                    junit '**/target/surefire-reports/*.xml'
-                }
-            }
-            
-        }
-       
-    }
+   
 }
 
