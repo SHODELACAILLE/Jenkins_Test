@@ -46,8 +46,8 @@ pipeline {
                 // Naviguer vers le répertoire du projet
                 dir('demo') {
                     // Exécuter les commandes Maven
-                    sh './mvnw clean package'
-                    sh './mvnw javadoc:javadoc'
+                    sh 'mvnw clean package'
+                    sh 'mvnw javadoc:javadoc'
                 }
             }
         }
