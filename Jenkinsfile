@@ -1,5 +1,4 @@
- /* 
- node {  
+ /* node {  
    
     def mvnHome = tool 'maven-3.5.2'
 
@@ -33,23 +32,20 @@
     }
 }
 */
-node {
-    agent any
-    stages {
-        stage('Build') {
+pipeline {
+    
+        stage('Build project') {
             steps {
-                // Commande pour lancer Maven. Assurez-vous que Maven est configuré dans Jenkins.
-                sh 'mvnw clean package'
+                // Change le répertoire courant en 'demo' où se trouve le pom.xml.
+                dir('demo') {
+                    // Compile le projet sans exécuter les tests
+                    sh 'mvn -B -DskipTests clean package'
+                    
+                    // Génère le Javadoc
+                    sh 'mvn javadoc:javadoc'
+                }
             }
         }
-        stage('Test') {
-            steps {
-                // Commande pour exécuter les tests Maven. Les rapports de tests seront générés.
-                sh 'mvnw test'
-            }
-        }
-        // D'autres étapes peuvent être ajoutées ici si nécessaire.
-    }
     post {
         // Actions à effectuer après les étapes, comme publier les rapports de tests.
         always {
