@@ -33,6 +33,7 @@ public class DemoApplicationTests {
         assertThat(calculatrice.subtract(5, 3)).isEqualTo(2);
     }
 
+    
     @Test
     public void testMultiplication() {
         Calculatrice calculatrice = new Calculatrice();
