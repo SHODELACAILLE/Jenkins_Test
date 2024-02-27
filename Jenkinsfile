@@ -1,5 +1,6 @@
-node {  
-    /*
+ /* 
+ node {  
+   
     def mvnHome = tool 'maven-3.5.2'
 
     stage('Clone repo'){
