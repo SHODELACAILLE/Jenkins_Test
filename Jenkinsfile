@@ -1,4 +1,4 @@
- /* node {  
+ node {  
    
     def mvnHome = tool 'maven-3.5.2'
 
@@ -33,7 +33,7 @@
 }
 
 
-
+/*
 pipeline {
     agent any 
 
@@ -56,7 +56,7 @@ pipeline {
         }
     }
 */
-
+/*
 pipeline {
     agent any
      tools {
@@ -94,3 +94,4 @@ pipeline {
     }
 } 
 
+*/
