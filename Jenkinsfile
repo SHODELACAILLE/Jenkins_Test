@@ -62,7 +62,7 @@ pipeline {
     stages {
         stage('SonarQube analysis') {
             steps {
-                withCredentials([string(credentialsId: 'ID_DE_VOTRE_TOKEN', variable: 'SONAR_TOKEN')]) {
+                withCredentials([string(credentialsId: '1', variable: 'http://localhost:9000')]) {
                     sh 'mvn sonar:sonar -Dsonar.host.url=http://votre_serveur_sonar:9000 -Dsonar.login=$SONAR_TOKEN'
                 }
             }
