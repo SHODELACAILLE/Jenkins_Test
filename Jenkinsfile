@@ -57,16 +57,18 @@ pipeline {
     }
 */
 
-node {
-  stage('SCM') {
-    checkout scm
-  }
-  stage('SonarQube Analysis') {
-    def mvn = tool 'maven-3.5.2';
-    withSonarQubeEnv() {
-      sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=Sonar -Dsonar.projectName='Sonar'"
+pipeline {
+    agent any
+    stages {
+        stage('SonarQube analysis') {
+            steps {
+                withCredentials([string(credentialsId: 'ID_DE_VOTRE_TOKEN', variable: 'SONAR_TOKEN')]) {
+                    sh 'mvn sonar:sonar -Dsonar.host.url=http://votre_serveur_sonar:9000 -Dsonar.login=$SONAR_TOKEN'
+                }
+            }
+        }
     }
-  }
+
 
 
 
