@@ -57,27 +57,17 @@ pipeline {
     }
 */
 
-pipeline {
-    agent any
-    stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-        stage('SonarQube analysis') {
-            steps {
-                script {
-                    // Assurez-vous que SONAR_HOST et SONAR_TOKEN sont définis
-                    docker.run("--rm",
-                        "-e SONAR_HOST_URL=${env.SONAR_HOST} " +
-                        "-e SONAR_LOGIN=${env.SONAR_TOKEN} " +
-                        "sonarsource/sonar-scanner-cli",
-                        "sonar-scanner")
-                }
-            }
-        }
+node {
+  stage('SCM') {
+    checkout scm
+  }
+  stage('SonarQube Analysis') {
+    def mvn = tool 'Default Maven';
+    withSonarQubeEnv() {
+      sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=Sonar -Dsonar.projectName='Sonar'"
     }
+  }
+
 
 
     post {
