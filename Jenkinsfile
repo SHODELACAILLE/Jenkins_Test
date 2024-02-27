@@ -45,7 +45,8 @@ pipeline {
             steps {
                 // Naviguer vers le répertoire du projet
                 dir('demo') {
-               
+                   sh 'chmod +x mvnw'
+
                     sh './mvnw clean package'
                     sh './mvnw javadoc:javadoc'
                 }
