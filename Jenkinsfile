@@ -36,23 +36,23 @@ pipeline {
     agent any 
 
     tools {
-        
-        maven 'maven-3.5.2'
+        // Spécifier l'installation de Maven
+        maven 'Maven'
     }
 
     stages {
         stage('Build project') {
             steps {
-                
+                // Naviguer vers le répertoire du projet
                 dir('demo') {
-                    
-                    sh './mvnw  clean package'
-                    
-                    sh './mvnw javadoc:javadoc'
+                    // Exécuter les commandes Maven
+                    bat 'mvnw clean package'
+                    bat 'mvnw javadoc:javadoc'
                 }
             }
         }
     }
+
 
     post {
        
