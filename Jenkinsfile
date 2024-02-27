@@ -44,8 +44,8 @@ pipeline {
  stages {
         stage('Build project') {
             steps {
-                dir('/demo') {
-                    
+                dir('demo') {
+                   
                     sh './mvnw clean package'
                     sh './mvnw javadoc:javadoc' 
                 }}}}
