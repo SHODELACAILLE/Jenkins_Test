@@ -41,14 +41,14 @@ pipeline {
     }
 
 
-    stages {
+ stages {
         stage('Build project') {
             steps {
-                sh 'C:\\Users\\akash\\Downloads\\Jenkins_Test\\demo\\mvnw clean package'
-                sh 'C:\\Users\\akash\\Downloads\\Jenkins_Test\\demo\\mvnw javadoc:javadoc'
-            }
-        }
-    }
+                dir('C:/Users/akash/Downloads/Jenkins_Test/demo') {
+                    // Corrected path to Maven Wrapper
+                    sh './mvnw clean package'
+                    sh './mvnw javadoc:javadoc' // Assuming you want to run Maven javadoc plugin
+                }}}}
 
 
 
