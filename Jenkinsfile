@@ -46,11 +46,7 @@ pipeline {
             steps {
                 // Naviguer vers le répertoire du projet
                 dir('demo') {
-                    // Accorder les privilèges nécessaires
-                    bat 'icacls . /grant:r "%USERNAME%":(F)'
-                    bat 'icacls target /grant:r "%USERNAME%":(F)'
-                    
-                    // Exécuter les commandes Maven
+
                     bat './mvnw clean package'
                     bat './mvnw javadoc:javadoc'
                 }
