@@ -38,14 +38,14 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                // Utilisez mvnw.cmd pour Windows
-                bat 'mvnw.cmd clean package'
+                // Commande pour lancer Maven. Assurez-vous que Maven est configuré dans Jenkins.
+                sh 'mvnw clean package'
             }
         }
         stage('Test') {
             steps {
-                // Utilisez mvnw.cmd pour Windows
-                bat 'mvnw.cmd test'
+                // Commande pour exécuter les tests Maven. Les rapports de tests seront générés.
+                sh 'mvnw test'
             }
         }
         // D'autres étapes peuvent être ajoutées ici si nécessaire.
@@ -57,5 +57,3 @@ pipeline {
         }
     }
 }
-
-
