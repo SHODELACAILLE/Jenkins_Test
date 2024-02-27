@@ -39,13 +39,13 @@ pipeline {
         stage('Build') {
             steps {
                 // Utilisation du Wrapper Maven pour la construction
-                sh './mvnw clean package'
+                sh '/demo/mvnw clean package'
             }
         }
         stage('Test') {
             steps {
                 // Utilisation du Wrapper Maven pour exécuter les tests
-                sh './mvnw test'
+                sh '/demo/mvnw test'
             }
         }
         // D'autres étapes peuvent être ajoutées ici si nécessaire.
