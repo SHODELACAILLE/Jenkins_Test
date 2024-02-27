@@ -1,6 +1,10 @@
 pipeline {
     agent any
     
+        triggers {
+        pollSCM('*/3 * * * *') // Déclenche le job toutes les 3 minutes
+    }
+    
     tools {
         // Définit l'outil Maven à utiliser dans ce pipeline
         maven 'maven-3.5.2'
