@@ -44,10 +44,10 @@ pipeline {
  stages {
         stage('Build project') {
             steps {
-                dir('C:/Users/akash/Downloads/Jenkins_Test/demo') {
-                    // Corrected path to Maven Wrapper
+                dir('/demo') {
+                    
                     sh './mvnw clean package'
-                    sh './mvnw javadoc:javadoc' // Assuming you want to run Maven javadoc plugin
+                    sh './mvnw javadoc:javadoc' 
                 }}}}
 
 
