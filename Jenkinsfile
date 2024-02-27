@@ -40,17 +40,19 @@ pipeline {
         maven 'maven-3.5.2'
     }
 
-
- stages {
+    stages {
         stage('Build project') {
             steps {
+                
                 dir('demo') {
-                   
-                    sh './mvnw clean package'
-                    sh './mvnw javadoc:javadoc' 
-                }}}}
-
-
+                    
+                    sh 'mvnw -B clean package'
+                    
+                    sh 'mvnw javadoc:javadoc'
+                }
+            }
+        }
+    }
 
     post {
        
