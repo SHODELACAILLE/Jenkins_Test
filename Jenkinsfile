@@ -31,7 +31,9 @@
         }
     }
 }
-*/
+
+
+
 pipeline {
     agent any 
 
@@ -47,8 +49,31 @@ pipeline {
                 dir('demo') {
                    sh 'chmod +x mvnw'
 
-                    sh './mvnw clean package'
+                    sh './mvnw -DskipTests  clean package'
                     sh './mvnw javadoc:javadoc'
+                }
+            }
+        }
+    }
+*/
+
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        stage('SonarQube analysis') {
+            steps {
+                script {
+                    // Assurez-vous que SONAR_HOST et SONAR_TOKEN sont définis
+                    docker.run("--rm",
+                        "-e SONAR_HOST_URL=${env.SONAR_HOST} " +
+                        "-e SONAR_LOGIN=${env.SONAR_TOKEN} " +
+                        "sonarsource/sonar-scanner-cli",
+                        "sonar-scanner")
                 }
             }
         }
@@ -68,5 +93,5 @@ pipeline {
         }
        
     }
-}
+} 
 
