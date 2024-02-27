@@ -59,15 +59,18 @@ pipeline {
 
 pipeline {
     agent any
+    environment {
+        SONAR_TOKEN = credentials('1')
+        SONAR_HOST_URL = 'http://localhost:9000'
+    }
     stages {
         stage('SonarQube analysis') {
             steps {
-                withCredentials([string(credentialsId: '1', variable: 'http://localhost:9000')]) {
-                    sh 'mvn sonar:sonar -Dsonar.host.url=http://votre_serveur_sonar:9000 -Dsonar.login=$SONAR_TOKEN'
-                }
+                sh "mvn sonar:sonar -Dsonar.host.url=${SONAR_HOST_URL} -Dsonar.login=${SONAR_TOKEN}"
             }
         }
     }
+
 
 
 
