@@ -62,7 +62,7 @@ node {
     checkout scm
   }
   stage('SonarQube Analysis') {
-    def mvn = tool 'Default Maven';
+    def mvn = tool 'maven-3.5.2';
     withSonarQubeEnv() {
       sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=Sonar -Dsonar.projectName='Sonar'"
     }
