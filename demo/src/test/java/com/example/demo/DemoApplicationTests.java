@@ -27,7 +27,7 @@ public class DemoApplicationTests {
         Calculatrice calculatrice = new Calculatrice();
         assertThat(calculatrice.add(2, 3)).isEqualTo(5);
     }
-    @Disabled
+    
     @Test
     public void testSubtraction() {
         Calculatrice calculatrice = new Calculatrice();
