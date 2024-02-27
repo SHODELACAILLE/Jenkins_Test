@@ -33,10 +33,11 @@
 }
 */
 pipeline {
-    agent any 
+    agent {
+        label 'windows'
+    }
 
     tools {
-        // Spécifier l'installation de Maven
         maven 'maven-3.5.2'
     }
 
@@ -45,15 +46,18 @@ pipeline {
             steps {
                 // Naviguer vers le répertoire du projet
                 dir('demo') {
+                    // Accorder les privilèges nécessaires
                     bat 'icacls . /grant:r "%USERNAME%":(F)'
                     bat 'icacls target /grant:r "%USERNAME%":(F)'
+                    
                     // Exécuter les commandes Maven
-                    sh './mvnw clean package'
-                    sh './mvnw javadoc:javadoc'
+                    bat './mvnw clean package'
+                    bat './mvnw javadoc:javadoc'
                 }
             }
         }
     }
+
 
 
     post {
