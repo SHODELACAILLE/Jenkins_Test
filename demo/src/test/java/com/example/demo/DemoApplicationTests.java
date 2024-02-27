@@ -1,33 +1,41 @@
 package com.example.demo;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class DemoApplicationTests {
 
-    private Calculatrice calculatrice;
+    // Classe Calculatrice définie directement dans le fichier de test
+    static class Calculatrice {
 
-    @BeforeEach
-    public void setUp() {
-        calculatrice = new Calculatrice();
+        public int add(int a, int b) {
+            return a + b;
+        }
+
+        public int subtract(int a, int b) {
+            return a - b;
+        }
+
+        public int multiply(int a, int b) {
+            return a * b;
+        }
     }
 
     @Test
     public void testAddition() {
-        // Utilisez l'instance de Calculatrice pour appeler la méthode add
+        Calculatrice calculatrice = new Calculatrice();
         assertThat(calculatrice.add(2, 3)).isEqualTo(5);
     }
 
     @Test
     public void testSubtraction() {
-        // Utilisez l'instance de Calculatrice pour appeler la méthode subtract
+        Calculatrice calculatrice = new Calculatrice();
         assertThat(calculatrice.subtract(5, 3)).isEqualTo(2);
     }
 
     @Test
     public void testMultiplication() {
-        // Utilisez l'instance de Calculatrice pour appeler la méthode multiply
+        Calculatrice calculatrice = new Calculatrice();
         assertThat(calculatrice.multiply(2, 3)).isEqualTo(6);
     }
 }
