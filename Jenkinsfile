@@ -38,14 +38,14 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                // Commande pour lancer Maven. Assurez-vous que Maven est configuré dans Jenkins.
-                sh 'mvn clean package'
+                // Utilisation du Wrapper Maven pour la construction
+                sh './mvnw clean package'
             }
         }
         stage('Test') {
             steps {
-                // Commande pour exécuter les tests Maven. Les rapports de tests seront générés.
-                sh 'mvn test'
+                // Utilisation du Wrapper Maven pour exécuter les tests
+                sh './mvnw test'
             }
         }
         // D'autres étapes peuvent être ajoutées ici si nécessaire.
@@ -57,3 +57,4 @@ pipeline {
         }
     }
 }
+
