@@ -24,7 +24,7 @@ public class DemoApplicationTests {
     @Test
     public void testAddition() {
         Calculatrice calculatrice = new Calculatrice();
-        assertThat(calculatrice.add(2, 3)).isEqualTo(6);
+        assertThat(calculatrice.add(2, 3)).isEqualTo(5);
     }
 
     @Test
