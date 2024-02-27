@@ -38,14 +38,14 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                // Utilisation du Wrapper Maven pour la construction
-                sh './mvnw clean package'
+                // Utilisez mvnw.cmd pour Windows
+                bat 'mvnw.cmd clean package'
             }
         }
         stage('Test') {
             steps {
-                // Utilisation du Wrapper Maven pour exécuter les tests
-                sh './mvnw test'
+                // Utilisez mvnw.cmd pour Windows
+                bat 'mvnw.cmd test'
             }
         }
         // D'autres étapes peuvent être ajoutées ici si nécessaire.
@@ -57,4 +57,5 @@ pipeline {
         }
     }
 }
+
 
