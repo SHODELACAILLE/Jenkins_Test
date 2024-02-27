@@ -33,22 +33,21 @@
 }
 */
 pipeline {
-    agent any // Assurez-vous que cette ligne est présente pour spécifier sur quel agent Jenkins le pipeline doit être exécuté
+    agent any 
 
     tools {
-        // Spécifie la version de Maven utilisée dans le pipeline
+        
         maven 'maven-3.5.2'
     }
 
     stages {
         stage('Build project') {
             steps {
-                // Change le répertoire courant en 'demo' où se trouve le pom.xml
+                
                 dir('demo') {
-                    // Compile le projet sans exécuter les tests
+                    
                     sh 'mvn -B -DskipTests clean package'
                     
-                    // Génère le Javadoc
                     sh 'mvn javadoc:javadoc'
                 }
             }
@@ -56,18 +55,17 @@ pipeline {
     }
 
     post {
-        // Actions à effectuer après les étapes, comme publier les rapports de tests
-        // Cette action est maintenant conditionnelle à la présence de rapports de tests
+       
         success {
             script {
-                // Vérifie si les rapports de tests existent avant de tenter de les publier
+              
                 if (fileExists('**/target/surefire-reports/*.xml')) {
                     junit '**/target/surefire-reports/*.xml'
                 }
             }
-            // Vous pouvez également ajouter des étapes pour publier le Javadoc ici si nécessaire
+            
         }
-        // D'autres conditions de post-traitement peuvent être ajoutées ici (failure, always, etc.)
+       
     }
 }
 
