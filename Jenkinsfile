@@ -46,7 +46,7 @@ pipeline {
                 
                 dir('demo') {
                     
-                    sh 'mvn -B  clean package'
+                    sh 'mvn  clean package'
                     
                     sh 'mvn javadoc:javadoc'
                 }
