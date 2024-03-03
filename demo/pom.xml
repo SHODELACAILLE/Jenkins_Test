@@ -32,13 +32,13 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.8.2</version> <!-- Assurez-vous d'utiliser la dernière version -->
+            <version>5.8.2</version> 
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.8.2</version> <!-- Assurez-vous d'utiliser la même version que junit-jupiter-api -->
+            <version>5.8.2</version> 
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -48,6 +48,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                <mainClass>com.example.demo.DemoApplication</mainClass>
+            </configuration>
             </plugin>
         </plugins>
     </build>
