@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class DemoApplicationTests {
 
-    // Classe Calculatrice définie directement dans le fichier de test
+   
     static class Calculatrice {
 
         public int add(int a, int b) {

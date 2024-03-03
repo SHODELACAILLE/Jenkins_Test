@@ -22,7 +22,8 @@ pipeline {
                     dir('demo') {
                         sh 'chmod +x mvnw'
                         // Exécuter l'analyse SonarQube en utilisant le wrapper Maven
-                        sh "./mvnw clean verify sonar:sonar -Dsonar.projectKey=com.example:demo -Dsonar.projectName='demo'"
+                        sh "./mvnw clean verify sonar:sonar -Dsonar.host.url=https://6e2a-2a01-e0a-1dc-a670-d4a9-cc43-bea9-888.ngrok-free.app -Dsonar.login=squ_ffae459d65db6d3b3096fd68adc667fce3a19747 -Dsonar.projectKey=com.example:demo -Dsonar.projectName='demo'"
+
                     }
                 }
             }
