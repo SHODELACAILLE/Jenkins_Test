@@ -16,6 +16,9 @@ pipeline {
         
         stage('SonarQube Analysis') {
             steps {
+                // Donner les permissions nécessaires au script mvnw
+                sh "chmod +x demo/mvnw"
+                
                 // Exécuter la commande Maven pour l'analyse SonarQube
                 withSonarQubeEnv('MySonar') {
                     // Remplacer 'MySonar' par le nom que vous avez donné à la configuration de SonarQube dans Jenkins
