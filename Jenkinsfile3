@@ -1,4 +1,9 @@
 node {
+
+        tools {
+        // Spécifier l'installation de Maven
+        maven 'maven-3.5.2'
+    }
   stage('SCM') {
     checkout scm
   }
