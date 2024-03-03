@@ -1,21 +1,27 @@
 pipeline {
-        agent any 
+    agent any 
 
     tools {
-        // Spécifier l'installation de Maven
-        maven 'maven-3.5.2'
+        // Specify the installation of Maven
+        maven 'M3' // Adjust the Maven version alias based on your Jenkins configuration
     }
 
-  stage('SCM') {
-    checkout scm
-  }
+    stages {
+        stage('SCM') {
+            steps {
+                checkout scm
+            }
+        }
 
-  
-  stage('SonarQube Analysis') {
-    def mvn = tool 'Default Maven';
-    withSonarQubeEnv() {
-         dir('demo') {
-      sh "./mvnw clean verify sonar:sonar -Dsonar.projectKey=com.example:demo -Dsonar.projectName='demo'"
+        stage('SonarQube Analysis') {
+            steps {
+                // Ensure you have the Maven tool correctly configured in Jenkins with the ID 'M3' or adjust as necessary
+                withSonarQubeEnv('MySonar') { // Replace 'YourSonarQubeEnvName' with your actual SonarQube environment name configured in Jenkins
+                    // Assuming 'mvn' command is configured and available
+                    sh "mvn clean verify sonar:sonar -Dsonar.projectKey=com.example:demo -Dsonar.host.url=YourSonarQubeURL -Dsonar.login=YourSonarQubeToken"
+                    // Replace 'YourSonarQubeURL' and 'YourSonarQubeToken' with your actual SonarQube server URL and authentication token
+                }
+            }
+        }
     }
-  }
-}}
+}
