@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.6.4</version> <!-- Mettez à jour la version ici -->
+        <version>2.6.4</version> <!-- Conservez cette version ou mettez-la à jour si nécessaire -->
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
@@ -49,10 +49,16 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>com.example.demo.DemoApplication</mainClass> <!-- Remplacez par votre classe principale -->
-                </configuration>
+                <!-- Pas besoin de spécifier la version ici, elle est héritée du parent -->
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
 </project>
+
