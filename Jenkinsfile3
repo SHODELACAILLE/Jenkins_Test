@@ -1,16 +1,27 @@
-node {
-
-        tools {
-        // Spécifier l'installation de Maven
+pipeline {
+    agent any
+    
+    tools {
+        // Spécifier l'installation de Maven configurée dans 'Global Tool Configuration'
         maven 'maven-3.5.2'
     }
-  stage('SCM') {
-    checkout scm
-  }
-  stage('SonarQube Analysis') {
-    def mvn = tool 'Default Maven';
-    withSonarQubeEnv() {
-      sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=SHODELACAILLE_Jenkins_Test_91b4e1cd-4dbd-4dab-bc82-4fcdd969ef3f -Dsonar.projectName='Jenkins_Test'"
+
+    stages {
+        stage('SCM') {
+            steps {
+                // Obtenir le code depuis le système de gestion de version
+                checkout scm
+            }
+        }
+        
+        stage('SonarQube Analysis') {
+            steps {
+                // Exécuter la commande Maven pour l'analyse SonarQube
+                withSonarQubeEnv('MySonar') {
+                    // Remplacer 'MySonar' par le nom que vous avez donné à la configuration de SonarQube dans Jenkins
+                    sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=SHODELACAILLE_Jenkins_Test_91b4e1cd-4dbd-4dab-bc82-4fcdd969ef3f -Dsonar.projectName="Jenkins_Test"'
+                }
+            }
+        }
     }
-  }
 }
