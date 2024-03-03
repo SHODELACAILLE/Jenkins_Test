@@ -2,14 +2,13 @@ pipeline {
     agent any 
 
     tools {
-        // Specify the installation of Maven
-        maven 'maven-3.5.2' // Make sure this version is configured in your Jenkins tools
+        maven 'maven-3.5.2' 
     }
 
     stages {
         stage('Checkout SCM') {
             steps {
-                checkout scm // This checks out source code from the configured SCM repository
+                checkout scm 
             }
         }
 

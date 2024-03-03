@@ -2,14 +2,13 @@ pipeline {
     agent any 
 
     tools {
-        // Spécifier l'installation de Maven
+       
         maven 'maven-3.5.2'
     }
 
     stages {
         stage('Build project') {
             steps {
-                // Naviguer vers le répertoire du projet
                 dir('demo') {
                    sh 'chmod +x mvnw'
 
