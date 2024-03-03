@@ -15,7 +15,7 @@
     <name>demo</name>
     <description>Demo project for Spring Boot</description>
     <properties>
-        <sonar.login>squ_ffae459d65db6d3b3096fd68adc667fce3a19747</sonar.login>
+        <sonar.token>squ_ffae459d65db6d3b3096fd68adc667fce3a19747</sonar.token>
         <java.version>17</java.version>
     </properties>
     <dependencies>
