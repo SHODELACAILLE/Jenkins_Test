@@ -23,7 +23,7 @@ pipeline {
  
                     withSonarQubeEnv('MySonar') {
                    
-                        sh './mvnw sonar:sonar -Dsonar.projectKey=com.example:demo -Dsonar.host.url=http://localhost:9000 -Dsonar.login=${squ_ffae459d65db6d3b3096fd68adc667fce3a19747}'
+                        sh './mvnw sonar:sonar -Dsonar.projectKey=com.example:demo -Dsonar.host.url=http://localhost:9000 -Dsonar.token=${squ_ffae459d65db6d3b3096fd68adc667fce3a19747}'
                     }
                 }
             }
