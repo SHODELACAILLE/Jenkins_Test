@@ -21,7 +21,7 @@ pipeline {
                       dir('demo') {
                         sh 'chmod +x mvnw'
                     // Remplacer 'MySonar' par le nom que vous avez donné à la configuration de SonarQube dans Jenkins
-                    sh "./mvnw clean verify sonar:sonar -Dsonar.projectKey=SHODELACAILLE_Jenkins_Test_91b4e1cd-4dbd-4dab-bc82-4fcdd969ef3f -Dsonar.projectName='Jenkins_Test'"
+                    sh "./mvnw clean verify sonar:sonar -Dsonar.projectKey=SHODELACAILLE_Jenkins_Test_91b4e1cd-4dbd-4dab-bc82-4fcdd969ef3f -Dsonar.projectName='demo'"
                 }
                 }
             }
