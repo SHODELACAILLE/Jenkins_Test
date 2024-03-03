@@ -23,7 +23,7 @@ pipeline {
  
                     withSonarQubeEnv('MySonar') {
                    
-                        sh './mvnw sonar:sonar -Dsonar.projectKey=com.example:demo -Dsonar.host.url=https://219f-2a01-e0a-1dc-a670-d4a9-cc43-bea9-888.ngrok-free.app -Dsonar.token=${squ_ffae459d65db6d3b3096fd68adc667fce3a19747}'
+                        sh './mvnw sonar:sonar -Dsonar.projectKey=com.example:demo -Dsonar.host.url=https://219f-2a01-e0a-1dc-a670-d4a9-cc43-bea9-888.ngrok-free.app -Dsonar.token=sqa_2620b0d6078983b95ac82330f3dbb70b58617f3c'
                     }
                 }
             }
