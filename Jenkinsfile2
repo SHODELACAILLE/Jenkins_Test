@@ -1,11 +1,9 @@
 pipeline {
     agent any 
-
     tools {
        
         maven 'maven-3.5.2'
     }
-
     stages {
         stage('Build project') {
             steps {
@@ -18,9 +16,7 @@ pipeline {
             }
         }
     } 
-
         post {
-       
         success {
             script {
               
@@ -28,8 +24,6 @@ pipeline {
                     junit '**/target/surefire-reports/*.xml'
                 }
             }
-            
         }
-       
     }
 } 

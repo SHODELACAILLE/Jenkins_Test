@@ -31,9 +31,7 @@
 
             stage('Publish Javadoc') {
                 steps {
-                
                     dir('demo/target/site/apidocs') {
-                    
                         publishHTML(target: [
                             reportDir: '.', 
                             reportFiles: 'index.html', 
