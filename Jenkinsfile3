@@ -19,7 +19,7 @@ pipeline {
                 // Exécuter la commande Maven pour l'analyse SonarQube
                 withSonarQubeEnv('MySonar') {
                     // Remplacer 'MySonar' par le nom que vous avez donné à la configuration de SonarQube dans Jenkins
-                    sh "${tool 'maven-3.5.2'}/mvnw clean verify sonar:sonar -Dsonar.projectKey=SHODELACAILLE_Jenkins_Test_91b4e1cd-4dbd-4dab-bc82-4fcdd969ef3f -Dsonar.projectName='Jenkins_Test'"
+                    sh "demo/mvnw clean verify sonar:sonar -Dsonar.projectKey=SHODELACAILLE_Jenkins_Test_91b4e1cd-4dbd-4dab-bc82-4fcdd969ef3f -Dsonar.projectName='Jenkins_Test'"
                 }
             }
         }
