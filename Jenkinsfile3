@@ -1,32 +1,11 @@
-pipeline {
-    agent any
-    
-    tools {
-        // Spécifier l'installation de Maven configurée dans 'Global Tool Configuration'
-        maven 'maven-3.5.2'
+node {
+  stage('SCM') {
+    checkout scm
+  }
+  stage('SonarQube Analysis') {
+    def mvn = tool 'Default Maven';
+    withSonarQubeEnv() {
+      sh "./mvnw clean verify sonar:sonar -Dsonar.projectKey=com.example:demo -Dsonar.projectName='demo'"
     }
-
-    stages {
-        stage('SCM') {
-            steps {
-                // Obtenir le code depuis le système de gestion de version
-                checkout scm
-            }
-        }
-        
-        stage('SonarQube Analysis') {
-            steps {
-                // Exécuter la commande Maven pour l'analyse SonarQube
-                withSonarQubeEnv('MySonar') {
-                    // Se déplacer dans le répertoire 'demo' et rendre le wrapper Maven exécutable
-                    dir('demo') {
-                        sh 'chmod +x mvnw'
-                        // Exécuter l'analyse SonarQube en utilisant le wrapper Maven
-                        sh "./mvnw clean verify sonar:sonar -Dsonar.host.url=https://6e2a-2a01-e0a-1dc-a670-d4a9-cc43-bea9-888.ngrok-free.app -Dsonar.login=squ_ffae459d65db6d3b3096fd68adc667fce3a19747 -Dsonar.projectKey=com.example:demo -Dsonar.projectName='demo'"
-
-                    }
-                }
-            }
-        }
-    }
+  }
 }
